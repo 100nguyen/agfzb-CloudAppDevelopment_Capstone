@@ -137,8 +137,11 @@ def add_review(request, dealer_id):
     dealer_url = "https://e324753c.us-south.apigw.appdomain.cloud/api/dealership"
     dealer = get_dealer_by_id_from_cf(dealer_url, id=dealer_id)
     context["dealer"] = dealer
+    context["dealer_id"] = dealer_id
+
     if request.method == 'GET':
         # Get cars for the dealer
+        print(CarModel.objects.all())
         cars = CarModel.objects.filter(id=dealer_id)
         print(cars)
         context["cars"] = cars
