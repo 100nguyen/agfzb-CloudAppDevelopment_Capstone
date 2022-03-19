@@ -123,12 +123,10 @@ def add_review(request, dealer_id):
 
     if request.method == 'GET':
         # Get cars for the dealer
-        print(CarModel.objects.all())
-        cars = CarModel.objects.filter(id=dealer_id)
-        print(cars)
+        cars = CarModel.objects.filter(dealer_id=dealer_id)
         context["cars"] = cars        
         return render(request, 'djangoapp/add_review.html', context)
-        
+
     elif request.method == 'POST':
         if request.user.is_authenticated:
             username = request.user.username

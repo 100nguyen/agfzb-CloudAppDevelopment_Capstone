@@ -49,12 +49,16 @@
             <div class="card-deck">
                 {% for review in review_list %}
                     <div class="card" style="width: 36rem;">
+
                         {% if review.sentiment == "positive" %}
-                            <img class="card-img-left" src="{{MEDIA_URL}}/emoji/positive.png" alt="Sentiment image">
+                            <img class="card-img-left" src="{{MEDIA_URL}}/emoji/positive.png"
+                                 alt="Sentiment image">
                         {% elif review.sentiment == "negative" %}
-                            <img class="card-img-left" src="{{MEDIA_URL}}/emoji/negative.png" alt="Sentiment image">                       
+                            <img class="card-img-left" src="{{MEDIA_URL}}/emoji/negative.png"
+                                 alt="Sentiment image">                       
                         {% else %}
-                            <img class="card-img-left" src="{{MEDIA_URL}}/emoji/neutral.png" alt="Sentiment image">
+                            <img class="card-img-left" src="{{MEDIA_URL}}/emoji/neutral.png" 
+                                 alt="Sentiment image">
                         {% endif %}
 
                         <div class="card-body bg-light">

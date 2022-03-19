@@ -12,7 +12,7 @@ import uuid
 # - Any other fields you would like to include in car make model
 # - __str__ method to print a car make object
 class CarMake(models.Model):
-    id = models.AutoField(primary_key=True)
+#    id = models.AutoField(primary_key=True)
     name = models.CharField(null=False, max_length=30, default='car make')
     description = models.CharField(max_length=1000)
 
@@ -37,7 +37,7 @@ class CarModel(models.Model):
         (SUV, 'SUV'),
         (WAGON, 'WAGON')
     ]
-    id = models.AutoField(primary_key=True)
+#    id = models.AutoField(primary_key=True)
     make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
     name = models.CharField(null=False, max_length=30, default='car model')
     dealer_id = models.IntegerField(default=50)
@@ -53,7 +53,16 @@ class CarModel(models.Model):
 # <HINT> Create a plain Python class `CarDealer` to hold dealer data
 class CarDealer:
 
-    def __init__(self, address, city, full_name, id, lat, long, short_name, st, zip):
+    def __init__(self, 
+                 address, 
+                 city, 
+                 full_name, 
+                 id, 
+                 lat, 
+                 long, 
+                 short_name, 
+                 st, 
+                 zip):
         # Dealer address
         self.address = address
         # Dealer city
@@ -79,7 +88,11 @@ class CarDealer:
 # <HINT> Create a plain Python class `DealerReview` to hold review data
 class DealerReview:
 
-    def __init__(self, dealership, name, purchase, review, purchase_date, car_make, car_model, car_year, sentiment, id):
+    def __init__(self, 
+                 dealership, 
+                 name, 
+                 purchase, 
+                 review):
         # Dealership
         self.dealership = dealership
         # Name
@@ -89,17 +102,17 @@ class DealerReview:
         # Review
         self.review = review
         # Purchase Date
-        self.purchase_date = purchase_date
+        self.purchase_date = '99/99/9999'
         # Car Make
-        self.car_make = car_make
+        self.car_make = 'N/A'
         # Car Model
-        self.car_model = car_model
+        self.car_model = 'N/A'
         # Car Year
-        self.car_year = car_year
+        self.car_year = 9999
         # Sentiment
-        self.sentiment = sentiment
+        self.sentiment = ''
         # ID
-        self.id = id       
+        self.id = 0      
 
     def __str__(self):
-        return "Review: " + self.review
+        return "Review: " + self.review 
